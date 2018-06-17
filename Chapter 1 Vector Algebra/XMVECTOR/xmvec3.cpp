@@ -1,5 +1,5 @@
-
-#include <windows.h> // for XMVerifyCPUSupport
+/*
+#include <windows.h> // 为了使用函数XMVerifyCPUSupport，检查是否支持SSE2
 #include <DirectXMath.h>
 #include <DirectXPackedVector.h>
 #include <iostream>
@@ -7,10 +7,10 @@ using namespace std;
 using namespace DirectX;
 using namespace DirectX::PackedVector;
 
-// Overload the  "<<" operators so that we can use cout to 
-// output XMVECTOR objects.
+// 重载  "<<" 运算符，用于输出XMVECTOR类型的对象
 ostream& XM_CALLCONV operator << (ostream& os, FXMVECTOR v)
 {
+    // XMVECTOR数据不能直接访问，因此要进行转换！
     XMFLOAT3 dest;
     XMStoreFloat3(&dest, v);
 
@@ -22,7 +22,7 @@ int main()
 {
     cout.setf(ios_base::boolalpha);
 
-    // Check support for SSE2 (Pentium4, AMD K8, and above).
+    // 检查是否支持SSE2 (Pentium4, AMD K8, and above).
     if (!XMVerifyCPUSupport())
     {
         cout << "directx math not supported" << endl;
@@ -43,7 +43,7 @@ int main()
     // Scalar multiplication: XMVECTOR operator * 
     XMVECTOR c = 10.0f*u;
 
-    // ||u||
+    // 向量的模 ||u||
     XMVECTOR L = XMVector3Length(u);
 
     // d = u / ||u||
@@ -55,7 +55,7 @@ int main()
     // e = u x v
     XMVECTOR e = XMVector3Cross(u, v);
 
-    // Find proj_n(w) and perp_n(w)
+    // 计算w平行于n、垂直于n的两个分量
     XMVECTOR projW;
     XMVECTOR perpW;
     XMVector3ComponentsFromNormal(&projW, &perpW, w, n);
@@ -64,7 +64,7 @@ int main()
     bool equal = XMVector3Equal(projW + perpW, w) != 0;
     bool notEqual = XMVector3NotEqual(projW + perpW, w) != 0;
 
-    // The angle between projW and perpW should be 90 degrees.
+    //  projW 和 perpW 成90度.
     XMVECTOR angleVec = XMVector3AngleBetweenVectors(projW, perpW);
     float angleRadians = XMVectorGetX(angleVec);
     float angleDegrees = XMConvertToDegrees(angleRadians);
@@ -86,5 +86,7 @@ int main()
     cout << "projW + perpW != w  = " << notEqual << endl;
     cout << "angle               = " << angleDegrees << endl;
 
+    system("pause");
     return 0;
 }
+*/
