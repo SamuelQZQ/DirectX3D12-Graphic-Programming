@@ -1,4 +1,4 @@
-#include <windows.h> // for XMVerifyCPUSupport
+#include <windows.h> 
 #include <DirectXMath.h>
 #include <DirectXPackedVector.h>
 #include <iostream>
@@ -6,8 +6,6 @@ using namespace std;
 using namespace DirectX;
 using namespace DirectX::PackedVector;
 
-// Overload the  "<<" operators so that we can use cout to 
-// output XMVECTOR and XMMATRIX objects.
 ostream& XM_CALLCONV operator << (ostream& os, FXMVECTOR v)
 {
     XMFLOAT4 dest;
@@ -32,7 +30,6 @@ ostream& XM_CALLCONV operator << (ostream& os, FXMMATRIX m)
 
 int main()
 {
-    // Check support for SSE2 (Pentium4, AMD K8, and above).
     if (!XMVerifyCPUSupport())
     {
         cout << "directx math not supported" << endl;
@@ -63,5 +60,6 @@ int main()
     cout << "E = inverse(A) = " << endl << E << endl;
     cout << "F = A*E = " << endl << F << endl;
  
+    system("pause");
     return 0;
 }
